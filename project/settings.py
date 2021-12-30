@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-v1k@nr#(yhqgi1(kalz#sy23h7)sirxh1p5r$sqjxm2jks4tg7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
-ALLOWED_HOSTS = ['blogsprogrammer.herokuapp.com','127.0.0.1']
+DEBUG = True
+#'blogsprogrammer.herokuapp.com','127.0.0.1'
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -80,8 +80,13 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+                'NAME': 'd42cq31umt08kc',
+                'USER':'qqkfhyuumsldkk',
+                'PASSOWRD':'1c7e9d20abb304f508a245fa999d71dcae59a3b731a8ace2fbb288dcdedaabe3',
+                'HOST':'ec2-34-236-87-247.compute-1.amazonaws.com',
+                'PORT':'5432',
+
     }
 }
 
@@ -123,9 +128,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = ()
-    # os.path.join(BASE_DIR, "static"),
-    # '/var/www/static/',
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"),
+    '/var/www/static/',]
+    
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
