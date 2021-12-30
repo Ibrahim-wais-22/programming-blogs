@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-v1k@nr#(yhqgi1(kalz#sy23h7)sirxh1p5r$sqjxm2jks4tg7
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-#'blogsprogrammer.herokuapp.com','127.0.0.1'
+
 ALLOWED_HOSTS = ['blogsprogrammer.herokuapp.com','127.0.0.1']
 
 
@@ -80,15 +80,13 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-                'NAME': 'd42cq31umt08kc',
-                'USER':'qqkfhyuumsldkk',
-                'PASSOWRD':'1c7e9d20abb304f508a245fa999d71dcae59a3b731a8ace2fbb288dcdedaabe3',
-                'HOST':'ec2-34-236-87-247.compute-1.amazonaws.com',
-                'PORT':'5432',
-
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASE['default'].update(db_from_env)
 
 
 # Password validation
